@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>UTLVTE - Historia</title>
+    <link rel="shortcut icon" href="https://upload.wikimedia.org/wikipedia/commons/2/20/ESCUDETO_UTE-LVT.png" type="image/x-icon">
+    <style>
+        :root { --utlvte-green: #008a3c; --utlvte-red: #d9232a; --dark-color: #222222; --bg-light: #f4f6f8; }
+        * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Segoe UI', Arial, sans-serif; }
+        body { background-color: var(--bg-light); color: var(--dark-color); min-height: 100vh; position: relative; }
+        
+        /* MARCA DE AGUA DERECHA (10%) */
+        body::before { content: ""; position: fixed; top: 50%; right: 2%; transform: translateY(-50%); width: 500px; height: 500px; background-image: url('https://upload.wikimedia.org/wikipedia/commons/thumb/2/20/ESCUDETO_UTE-LVT.png/500px-ESCUDETO_UTE-LVT.png'); background-repeat: no-repeat; background-position: center; background-size: contain; opacity: 0.10; pointer-events: none; z-index: -1; }
+        
+        .top-header { background: #fff; padding: 15px 20px; display: flex; justify-content: center; border-bottom: 1px solid #e0e0e0; }
+        .brand-container { display: flex; align-items: center; gap: 20px; }
+        .header-logo { height: 85px; }
+        .brand-titles { text-align: center; }
+        .utlvte-main { color: var(--utlvte-green); font-size: 3rem; font-weight: 900; font-style: italic; line-height: 1; }
+        .utlvte-sub { color: var(--utlvte-red); font-size: 1.15rem; font-weight: bold; font-style: italic; }
+        
+        .main-nav { background: var(--utlvte-green); position: sticky; top: 0; z-index: 1000; box-shadow: 0 4px 10px rgba(0,0,0,0.15); }
+        .nav-list { display: flex; justify-content: center; list-style: none; }
+        .nav-link { display: block; padding: 14px 22px; color: #fff; text-decoration: none; font-weight: 800; font-size: 0.9rem; text-transform: uppercase; }
+        .nav-link:hover { background: rgba(0, 0, 0, 0.15); }
+        .nav-item.active .nav-link { color: #ff3b30; }
+        
+        .container { max-width: 1100px; margin: 40px auto; padding: 0 20px; display: flex; flex-direction: column; gap: 25px; }
+        .card { background: rgba(255,255,255,0.95); padding: 25px; border-radius: 8px; box-shadow: 0 3px 8px rgba(0,0,0,0.06); border-top: 5px solid var(--utlvte-green); }
+        .card h2 { color: var(--utlvte-green); margin-bottom: 20px; }
+
+        /* DISEÑO PARA COLOCAR LA IMAGEN A LA IZQUIERDA */
+        .historia-flex {
+            display: flex;
+            gap: 25px;
+            align-items: center;
+            flex-wrap: wrap; /* Ajuste automático para celulares */
+        }
+        .historia-img {
+            width: 100%;
+            max-width: 380px; /* Tamaño máximo de la imagen */
+            height: auto;
+            border-radius: 8px;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.15);
+            object-fit: cover;
+        }
+        .historia-texto {
+            flex: 1;
+            min-width: 280px;
+            line-height: 1.7;
+        }
+
+        footer { background: var(--dark-color); color: white; text-align: center; padding: 25px; margin-top: 50px; }
+
+        /* CHATBOT */
+        .chatbot-btn { position: fixed; bottom: 25px; right: 25px; background: var(--utlvte-green); color: white; border: none; width: 60px; height: 60px; border-radius: 50%; font-size: 26px; cursor: pointer; box-shadow: 0 4px 12px rgba(0,0,0,0.3); z-index: 2000; }
+        .chat-window { display: none; position: fixed; bottom: 95px; right: 25px; width: 320px; height: 420px; background: #fff; border-radius: 10px; box-shadow: 0 5px 20px rgba(0,0,0,0.25); flex-direction: column; z-index: 2000; }
+        .chat-header { background: var(--utlvte-green); color: white; padding: 12px 15px; font-weight: bold; display: flex; justify-content: space-between; }
+        .chat-body { flex: 1; padding: 15px; overflow-y: auto; background: #f9f9f9; display: flex; flex-direction: column; gap: 10px; }
+        .message { max-width: 80%; padding: 8px 12px; border-radius: 12px; font-size: 0.88rem; }
+        .bot-msg { background: #e4e6eb; align-self: flex-start; }
+        .user-msg { background: var(--utlvte-green); color: white; align-self: flex-end; }
+        .chat-footer { display: flex; padding: 10px; border-top: 1px solid #ddd; }
+        .chat-footer input { flex: 1; padding: 8px; border: 1px solid #ccc; border-radius: 4px; }
+        .chat-footer button { background: var(--utlvte-green); color: white; border: none; padding: 8px 12px; margin-left: 5px; border-radius: 4px; cursor: pointer; }
+    </style>
+</head>
+<body>
+    <header class="top-header">
+        <div class="brand-container">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/20/ESCUDETO_UTE-LVT.png/500px-ESCUDETO_UTE-LVT.png" class="header-logo">
+            <div class="brand-titles">
+                <div class="utlvte-sub">UNIVERSIDAD TÉCNICA "LUIS VARGAS TORRES" DE ESMERALDAS</div>
+                <div class="utlvte-sub">SEDE SANTO DOMINGO - LA CONCORDIA</div>
+                <div class="utlvte-main">UTLVTE</div>
+            </div>
+        </div>
+    </header>
+
+    <nav class="main-nav">
+        <ul class="nav-list">
+            <li class="nav-item"><a href="index.html" class="nav-link">Inicio</a></li>
+            <li class="nav-item active"><a href="historia.html" class="nav-link">Historia</a></li>
+            <li class="nav-item"><a href="nosotros.html" class="nav-link">Nosotros</a></li>
+            <li class="nav-item"><a href="servicios.html" class="nav-link">Servicios</a></li>
+            <li class="nav-item"><a href="carreras.html" class="nav-link">Carreras</a></li>
+            <li class="nav-item"><a href="contacto.html" class="nav-link">Contacto</a></li>
+            <li class="nav-item"><a href="juego.html" class="nav-link">Juego</a></li>
+            <li class="nav-item"><a href="emociones.html" class="nav-link">Emociones</a></li>
+            <li class="nav-item"><a href="promedio.html" class="nav-link">Promedio</a></li>
+        </ul>
+    </nav>
+
+    <main class="container">
+        <section class="card">
+            <h2>Nuestra Historia</h2>
+            
+            <div class="historia-flex">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/5/5d/Crnel_Luis_Vargas_Torres.jpg?utm_source=es.wikipedia.org&utm_campaign=index&utm_content=original" alt="Historia UTLVTE" class="historia-img">
+                
+                <div class="historia-texto">
+                    <p>A la etapa medieval, de manera común y ligera, se la considera un período de total oscurantismo. En realidad, no es del todo así. Entre otras razones porque las primeras universidades con la estructuración que actualmente conocemos, se crearon en esa época.
+
+                        Se considera que las primeras fueron la de Bolonia con su facultad de Medicina; y la más prestigiosa, la de París, con su facultad de Leyes. Luego vendrían Oxford (muy allegada a la de París), Cambridge (como disidente de Oxford), Padua, Nápoles, Salamanca, Lérida, Praga, Cracovia, Viena, etc. Fueron concebidas como una especie de polo de desarrollo de sus respectivas localidades, por el movimiento de personas y de comercio que generaron.
+
+                        En lo que respecta a la creación de la Universidad Técnica “Luis Vargas Torres” de Esmeraldas (UTLVTE) hay tres períodos claramente identificables, como lo dejara consignado el Académico de la Historia, Marcel Pérez Estupiñán, también uno de sus estudiantes y artífices fundadores más importantes, y que nos ha servido de guía para realizar esta exposición.</p>
+                    <br>
+                    <p>La Universidad Técnica "Luis Vargas Torres" de Esmeraldas extendió sus servicios hacia Santo Domingo de los Tsáchilas y La Concordia con el fin de fortalecer el acceso público a la educación superior en el país.</p>
+                    <br>
+                    <p>El nombre de la universidad rinde homenaje al héroe esmeraldeño Coronel Luis Vargas Torres, cuyo ejemplo de lucha, ideales de libertad y convicción social guían la formación de nuestros profesionales.</p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- CHATBOT -->
+    <button class="chatbot-btn" onclick="toggleChat()">💬</button>
+    <div class="chat-window" id="chatWindow">
+        <div class="chat-header"><span>Asistente UTLVTE</span><button onclick="toggleChat()" style="background:none;border:none;color:white;cursor:pointer;">✕</button></div>
+        <div class="chat-body" id="chatBody"><div class="message bot-msg">¡Hola! Bienvenido al portal oficial. ¿En qué puedo ayudarte?</div></div>
+        <div class="chat-footer">
+            <input type="text" id="userInput" placeholder="Escribe tu consulta..." onkeypress="if(event.key==='Enter')sendMessage()">
+            <button onclick="sendMessage()">Enviar</button>
+        </div>
+    </div>
+
+    <footer><p>&copy; 2026 Universidad Técnica Luis Vargas Torres de Esmeraldas - Sede Santo Domingo</p></footer>
+
+     <script>
+        // 1. Abrir y cerrar la ventana flotante
+        function toggleChat() {
+            const chat = document.getElementById('chatWindow');
+            chat.style.display = (chat.style.display === 'flex') ? 'none' : 'flex';
+        }
+
+        // 2. Base de datos con palabras clave y respuestas
+        const baseDeDatosBot = [
+            {
+                palabras: ['admision', 'admisión', 'cupo', 'requisito', 'inscribir', 'postular', 'ingreso', 'inscripcion'],
+                respuesta: 'El proceso de admisión requiere: copia de cédula, título de bachiller y registro en la plataforma oficial de la UTLVTE.'
+            },
+            {
+                palabras: ['carrera', 'carreras', 'oferta', 'estudiar', 'profesion', 'titulos'],
+                respuesta: 'Se ofrecen las carreras de Administracion de Empresas, Contabilidad y Auditoria, Tecnologias de la Información (TICS).".'
+            },
+            {
+                palabras: ['horarios', 'clases', 'jornada', 'turno', 'seccion'],
+                respuesta: 'Las clases se imparten en jornadas matutina de 7:30 a.m  a 12:30 a.m y vespertina de 13:00 p.m a 18:00 p.m. Los horarios oficiales se publican antes de iniciar el ciclo.'
+            },
+            {
+                palabras: ['ubicacion', 'direccion', 'donde', 'llegar', 'mapa', 'queda'],
+                respuesta: 'Nos encontramos en el Km 1.5 Vía La Villegas, Cantón La Concordia, Santo Domingo de los Tsáchilas, Ecuador.'
+            },
+            {
+                palabras: ['costo', 'precio', 'pagar', 'cuota', 'pension', 'gratis', 'valor'],
+                respuesta: 'Estudiar en la UTLVTE no tiene costo, es una universidad pública y de educación superior totalmente gratuita.'
+            },
+            {
+                palabras: ['contacto', 'telefono', 'correo', 'email', 'secretaria', 'atencion'],
+                respuesta: 'Puedes escribir al correo: admision.santodomingo@ute-lvt.edu.ec o llamar al (02) 275-0000.'
+            }
+        ];
+
+        // 3. Función que analiza lo que el usuario escribe
+        function getBotResponse(input) {
+            const textoUsuario = input.toLowerCase();
+
+            for (let item of baseDeDatosBot) {
+                if (item.palabras.some(palabra => textoUsuario.includes(palabra))) {
+                    return item.respuesta;
+                }
+            }
+
+            return 'Lo siento, no reconozco esa consulta. Puedes preguntarme sobre: admisiones, carreras, horarios, ubicación, costos o contactos.';
+        }
+
+        // 4. Función de envío que CONECTA el chat con la lógica
+        function sendMessage() {
+            const input = document.getElementById('userInput');
+            const text = input.value.trim();
+            if (!text) return;
+
+            const chatBody = document.getElementById('chatBody');
+
+            // Muestra el mensaje del usuario en pantalla
+            chatBody.innerHTML += `<div class="message user-msg">${text}</div>`;
+            input.value = '';
+            chatBody.scrollTop = chatBody.scrollHeight;
+
+            // Procesa la respuesta con la función getBotResponse y la muestra
+            setTimeout(() => {
+                const respuestaBot = getBotResponse(text);
+                chatBody.innerHTML += `<div class="message bot-msg">${respuestaBot}</div>`;
+                chatBody.scrollTop = chatBody.scrollHeight;
+            }, 500);
+        }
+    </script>
+</body>
+</html>
